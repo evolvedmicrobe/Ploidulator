@@ -3,4 +3,6 @@
 */bin/*
 */obj/*
 */publish/*
-
+obj/*
+publish/*
+bin/*
