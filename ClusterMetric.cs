@@ -357,8 +357,8 @@ namespace Ploidulator
         private void SetClusterReferenceIdAndSequence()
         {
             id = GetId(sequencesThisCluster[0]);
-            //NOT THE REFERENCE
-            referenceSequence = GetSequence(sequencesThisCluster[0]);
+            //TODO: NOT THE REFERENCE
+            referenceSequence = sequencesThisCluster[0].QuerySequence.ToString();
         }
 
         /// <summary>
@@ -422,26 +422,18 @@ namespace Ploidulator
         private void IterateSequenceDict()
         {
             double[] alignmentQualities = new double[CountDistinct]; // one for every sequence in the map, just get its qualities
-            double[] readQualities = new double[CountDistinct]; //
-            Collection<int> frequencies = new Collection<int>();
-
+            double[] readQualities = new double[CountDistinct]; 
             int i = 0;
             foreach (List<SAMAlignedSequence> seqList in sequenceDict.Values)
             {
                 // Alighment qualities
-                alignmentQualities[i] = seqList[0].MapQ;
-
+                alignmentQualities[i] = seqList.Select(x => x.MapQ).Average();//seqList[0].MapQ;
                 // Read qualities
-                QualitativeSequence qSeq = new QualitativeSequence(SAMDnaAlphabet.Instance, FastQFormatType.Sanger, GetSequence(seqList[0]), GetReadQuality(seqList[0]));
-                readQualities[i++] = qSeq.GetQualityScores().Average();
-
-                // Frequencies
-                frequencies.Add(seqList.Count);
+                readQualities[i++]=seqList.Average(x=>x.GetQualityScores().Average());
             }
 
             alignmentQuality = alignmentQualities.Length > 0 ? Math.Round(alignmentQualities.Average(), 2) : 0;
             readQuality = readQualities.Length > 0 ? Math.Round(readQualities.Average(), 2) : 0;
-            //frequencyDistributionSequences = frequencies;
         }
 
         /// <summary>
@@ -835,24 +827,6 @@ namespace Ploidulator
             }
         }
 
-        /// <summary>
-        /// Given a SAMAlignedSequence, returns a string representation of the genetic sequence
-        /// </summary>
-        private static string GetSequence(SAMAlignedSequence seq)
-        {
-            String seqStr = seq.QuerySequence.ToString();
-            return Regex.Split(seqStr, "\r\n")[0];
-        }
-        /// <summary>
-        /// Given a SAMAlignedSequence, returns the string representing encoded per-base read quality
-        /// </summary>
-        private static string GetReadQuality(SAMAlignedSequence seq)
-        {
-            String seqStr = seq.QuerySequence.ToString();
-            return Regex.Split(seqStr, "\r\n")[1];
-        }
-
-
         static int lastRGLocation = Int32.MaxValue;
         /// <summary>
         /// Given a SAMAlignedSequence, get the RG tag for that read
@@ -939,7 +913,7 @@ namespace Ploidulator
             Dictionary<String, List<SAMAlignedSequence>> dict = new Dictionary<String, List<SAMAlignedSequence>>();
             foreach (SAMAlignedSequence seq in seqs)
             {
-                AddToDict(dict, GetSequence(seq), seq);
+                AddToDict(dict, seq.QuerySequence.ToString(), seq);
             }
             return (from sequence in dict orderby sequence.Value.Count descending select sequence)
                     .ToDictionary(pair => pair.Key, pair => pair.Value);

@@ -6,3 +6,6 @@
 obj/*
 publish/*
 bin/*
+*.psess
+*.pfx
+!library/*
