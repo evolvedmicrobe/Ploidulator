@@ -6,27 +6,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ploidulator
+namespace Ploidulator.Metrics
 {
     /// <summary>
     /// An IMetric calculates various metric values from a list of SAMAlignedSequences
     /// </summary>
-    public interface IMetric
+    public interface IClusterMetric
     {
-        /// <summary>
-        /// String of tab-separated values for writing to file by MetricFormatter.
-        /// </summary>
-        string ToString();
-
+        
         /// <summary>
         /// Calculate metric values from the given list of sequences.
+        /// Returns the metrics as a list of strings
         /// </summary>
-        void Calculate(Collection<SAMAlignedSequence> clusterSequences);
+        List<double> Calculate(Cluster cluster);
 
         /// <summary>
-        /// Reset all values to null and lists to empty.
+        /// Gets the headers for the fields returned by calculate
         /// </summary>
-        void Reset();
+        /// <typeparam name="?"></typeparam>
+        /// <param name="?"></param>
+        IList<string> GetHeaderFields();
+
+     
 
     }
 }

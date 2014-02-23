@@ -51,7 +51,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -69,27 +68,27 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accord">
-      <HintPath>library\Accord.dll</HintPath>
+    <Reference Include="Accord, Version=2.10.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Accord.NET\Framework\Release\Accord.dll</HintPath>
     </Reference>
-    <Reference Include="Accord.MachineLearning">
-      <HintPath>library\Accord.MachineLearning.dll</HintPath>
+    <Reference Include="Accord.MachineLearning, Version=2.10.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Accord.NET\Framework\Release\Accord.MachineLearning.dll</HintPath>
     </Reference>
-    <Reference Include="Accord.Math">
-      <HintPath>library\Accord.Math.dll</HintPath>
+    <Reference Include="Accord.Statistics, Version=2.10.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Accord.NET\Framework\Release\Accord.Statistics.dll</HintPath>
     </Reference>
-    <Reference Include="Accord.Statistics">
-      <HintPath>library\Accord.Statistics.dll</HintPath>
-    </Reference>
-    <Reference Include="AForge">
-      <HintPath>library\AForge.dll</HintPath>
-    </Reference>
-    <Reference Include="AForge.Math">
-      <HintPath>library\AForge.Math.dll</HintPath>
-    </Reference>
-    <Reference Include="Bio, Version=1.1.5153.23442, Culture=neutral, PublicKeyToken=13335e9abfbf69d0, processorArchitecture=MSIL">
+    <Reference Include="Bio, Version=1.1.5154.39021, Culture=neutral, PublicKeyToken=13335e9abfbf69d0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\BioTFS2010\bio\bio\Build\Binaries\Release\Bio.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0-rc1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -106,6 +105,24 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -120,12 +137,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClusterMetricHandler.cs" />
-    <Compile Include="ClusterMetric.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="IMetric.cs" />
-    <Compile Include="IMetricHandler.cs" />
-    <Compile Include="MetricFormatter.cs" />
     <Compile Include="Ploidulator.xaml.cs">
       <DependentUpon>Ploidulator.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -179,6 +191,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Phase.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PloidulatorLibrary\PloidulatorLibrary.csproj">
+      <Project>{30512c09-4c8a-40d6-be45-ab2052874cfc}</Project>
+      <Name>PloidulatorLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

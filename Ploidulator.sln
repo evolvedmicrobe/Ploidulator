@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ploidulator", "Ploidulator.csproj", "{4A2F4755-5072-4B2C-93EC-8BF81432C964}"
+VisualStudioVersion = {0}
+MinimumVisualStudioVersion = {0}
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloidulatorLibrary", "PloidulatorLibrary\PloidulatorLibrary.csproj", "{30512C09-4C8A-40D6-BE45-AB2052874CFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ddradqc", "ddradqc\ddradqc.csproj", "{06B736C1-57DB-4253-B2C9-18871FCD001F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +13,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A2F4755-5072-4B2C-93EC-8BF81432C964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A2F4755-5072-4B2C-93EC-8BF81432C964}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A2F4755-5072-4B2C-93EC-8BF81432C964}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A2F4755-5072-4B2C-93EC-8BF81432C964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B736C1-57DB-4253-B2C9-18871FCD001F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B736C1-57DB-4253-B2C9-18871FCD001F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B736C1-57DB-4253-B2C9-18871FCD001F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B736C1-57DB-4253-B2C9-18871FCD001F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30512C09-4C8A-40D6-BE45-AB2052874CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30512C09-4C8A-40D6-BE45-AB2052874CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30512C09-4C8A-40D6-BE45-AB2052874CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30512C09-4C8A-40D6-BE45-AB2052874CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ddradqc\ddradqc.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
